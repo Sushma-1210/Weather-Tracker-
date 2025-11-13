@@ -1,0 +1,212 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    font-family: sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    transition: background 0.5s;
+    position: relative;
+    overflow: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    background: var(--weather-bg, url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80')) center center/cover no-repeat;
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+.container{
+    width: 400px;
+    height: min-content;
+    background: rgba(255,255,255,0.95);
+    border-radius: 18px;
+    padding: 32px 28px 28px 28px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,255,255,0.18);
+    transition: box-shadow 0.3s;
+    position: relative;
+    z-index: 1;
+}
+
+.container:hover {
+    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.25);
+}
+
+.search-box{
+    width: 100%;
+    height: min-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-box input{
+    width: 80%;
+    font-size: 20px;
+    text-transform: capitalize;
+    color: #333;
+    background: #f0f4f8;
+    padding: 14px 18px;
+    border-radius: 16px;
+    border: 1px solid #e0e0e0;
+    transition: box-shadow 0.2s, border 0.2s;
+    box-shadow: 0 2px 8px rgba(102,126,234,0.08);
+}
+
+.search-box input:focus {
+    border: 1.5px solid #764ba2;
+    box-shadow: 0 4px 16px rgba(102,126,234,0.12);
+}
+
+.search-box input::placeholder{
+    color: #000;
+}
+
+.search-box button{
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 22px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(102,126,234,0.12);
+}
+
+.search-box button:hover{
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(102,126,234,0.18);
+}
+
+.weather-body{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-block: 24px;
+    animation: fadeIn 0.7s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.weather-body img{
+    width: 70%;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 4px 12px rgba(102,126,234,0.15));
+}
+
+.weather-box{
+    margin-block: 22px;
+    text-align: center;
+}
+
+.weather-box .temperature{
+    font-size: 48px;
+    font-weight: 900;
+    color: #764ba2;
+    position: relative;
+    letter-spacing: 1px;
+}
+
+.weather-box .temperature sup{
+    font-size: 22px;
+    position: absolute;
+    font-weight: 700;
+    color: #667eea;
+    margin-left: 2px;
+}
+
+.weather-box .description{
+    font-size: 22px;
+    font-weight: 700;
+    text-transform: capitalize;
+    color: #333;
+    margin-top: 6px;
+}
+
+.weather-details{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 32px;
+}
+
+.humidity, .wind{
+    display: flex;
+    align-items: center;
+    background: #f0f4f8;
+    border-radius: 12px;
+    padding: 10px 18px;
+    box-shadow: 0 2px 8px rgba(102,126,234,0.08);
+}
+
+.humidity{
+    margin-left: 10px;
+}
+
+.wind{
+    margin-right: 10px;
+}
+
+.weather-details i{
+    font-size: 36px;
+    color: #667eea;
+}
+
+.weather-details .text{
+    margin-left: 12px;
+    font-size: 17px;
+    color: #333;
+}
+
+.text span{
+    font-size: 22px;
+    font-weight: 800;
+    color: #764ba2;
+}
+
+.location-not-found{
+    margin-top: 24px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    animation: fadeIn 0.7s;
+}
+
+.location-not-found h1{
+    font-size: 22px;
+    color: #ff4e4e;
+    margin-block-end: 18px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.location-not-found{
+    width: 80%;
+}
